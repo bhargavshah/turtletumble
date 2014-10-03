@@ -1,0 +1,171 @@
+<DOCTYPE! html>
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Marmelad' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css'>
+<title>Lesson 6 :CSS</title>
+<script src="jquery2.js"></script>
+</head>
+<body>
+<style>
+body{
+background-image:url(blue_theme.jpg);
+}
+div.panel{
+background:rgba(110,26,255,0.5);
+border-radius:8px;
+margin:5px 0px 5px 0px;
+}
+div.panel h1{
+background:rgba(22,142,232,0.5);
+color:rgb(39,232,189);
+padding:0.5% 0% 0.5% 1%;
+margin:0% 0% 1% 0%;
+font-family: 'Nova Flat', cursive;
+text-shadow : 5px 5px 20px green;
+}
+div.panel h1 span{
+color:rgb(17,232,152);
+font-size:0.7em;
+}
+div.panel p{
+color:rgb(63,232,15);
+padding-left: 1%;
+font-family:'Marmelad', sans-serif;
+}
+ul.home-links{
+font-size: 30px;
+padding-left:0.2%;
+position:fixed;
+bottom:5px;
+left:5px;
+color:rgba(22,142,232,0.5);
+}
+ul li{
+list-style-type:none;
+}
+ul li.link .showState{
+}
+.link1{
+position:fixed;
+bottom:70px;
+left:5px;
+}
+.link2{
+position:fixed;
+bottom:30px;
+left:50px;
+}
+.home{
+cursor:pointer;
+-webkit-user-select:none;
+}
+</style>
+<div class="panel">
+<h1>Tortoises  <span>Fun Facts</span></h1>
+<p>A tortoise's shell is made up of 60 different bones all connected to each other<br/>
+
+The top of a tortoise's shell is called a “carapace”<br/>
+
+The underside of the shell is called a “plastron”<br/>
+
+The carapace and the plastron of a tortoises shell is connected by what is known as a bridge<br/>
+
+Tortoises can retract their heads and all their limbs including their tails into their shells when they feel threatened or attacked by predators<br/></p>
+</div>
+
+
+<div class="panel">
+<h1>Turtles  <span>Cool Facts</span></h1>
+<p>
+
+Turtles are reptiles.<br/>
+
+Turtles have a hard shell that protects them like a shield, this upper shell is called a ‘carapace’.<br/>
+
+Turtles also have a lower shell called a ‘plastron’.<br/>
+
+Many turtle species (not all) can hide their heads inside their shells when attacked by predators.<br/>
+
+Turtles have existed for around 215 million years.<br/>
+
+Like other reptiles, turtles are cold blooded.<br/>
+</p>
+</div>
+<ul class="home-links">
+<li><a class="home">&#9751;</a></li>
+</ul>
+
+<script>
+var aHome = document.getElementsByClassName('home');
+var home = aHome[0];
+var homeLinksShown = false;
+
+
+home.addEventListener("click",manageHomeLinks);
+
+var hideLinks = function(){$('div.panel').hide();};
+
+
+var setUpLinks = function(){
+var html = this.innerHTML;
+hideLinks();
+switch(html)
+{
+case 'link1':
+$('div.panel')
+.eq(0).fadeIn();
+break;
+case 'link2':
+$('div.panel')
+.eq(1).fadeIn();
+break;
+default:
+}
+};
+
+var startup = function(){
+hideLinks();
+$('div.panel').eq(0).fadeIn();
+}; startup();
+
+function manageHomeLinks()
+{
+	if(!homeLinksShown)
+	{
+	l("clicked");
+	var link1 = createHomeElement("link1");
+	link1.className += " link1";
+	var link2 = createHomeElement("link2");
+	link2.className += " link2";
+	home.appendChild(link1);
+	home.appendChild(link2);
+	$('.links a').click(setUpLinks);
+	}
+	else
+	{
+		var children = home.getElementsByClassName('links');
+		var i;
+		for(i=children.length-1;i>=0;i--)
+		{
+			children[i].parentNode.removeChild(children[i]);
+		}
+	}
+	homeLinksShown = !homeLinksShown;
+}
+
+function createHomeElement(name)
+{
+	var list = document.createElement("li");
+	var anchor = document.createElement("a");
+	var text = document.createTextNode(name);
+	anchor.appendChild(text);
+	list.appendChild(anchor);
+	list.setAttribute("class","links");
+	return list;
+}
+
+var l = function(s){console.log(s)};
+</script>
+</body>
+</html>
