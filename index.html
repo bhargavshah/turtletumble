@@ -14,7 +14,7 @@ background-image:url(blue_theme.jpg);
 div.panel{
 background:rgba(110,26,255,0.5);
 border-radius:8px;
-margin:5px 0px 5px 0px;
+margin:75px 80px 0px 80px;
 }
 div.panel h1{
 background:rgba(22,142,232,0.5);
@@ -23,6 +23,7 @@ padding:0.5% 0% 0.5% 1%;
 margin:0% 0% 1% 0%;
 font-family: 'Nova Flat', cursive;
 text-shadow : 5px 5px 20px green;
+font-size:70;
 }
 div.panel h1 span{
 color:rgb(17,232,152);
@@ -31,7 +32,9 @@ font-size:0.7em;
 div.panel p{
 color:rgb(63,232,15);
 padding-left: 1%;
+padding-bottom: 2%;
 font-family:'Marmelad', sans-serif;
+font-size:30;
 }
 ul.home-links{
 font-size: 30px;
@@ -112,11 +115,11 @@ var html = this.innerHTML;
 hideLinks();
 switch(html)
 {
-case 'link1':
+case 'Tortoises':
 $('div.panel')
 .eq(0).fadeIn();
 break;
-case 'link2':
+case 'Turtles':
 $('div.panel')
 .eq(1).fadeIn();
 break;
@@ -134,9 +137,9 @@ function manageHomeLinks()
 	if(!homeLinksShown)
 	{
 	l("clicked");
-	var link1 = createHomeElement("link1");
+	var link1 = createHomeElement("Tortoises");
 	link1.className += " link1";
-	var link2 = createHomeElement("link2");
+	var link2 = createHomeElement("Turtles");
 	link2.className += " link2";
 	home.appendChild(link1);
 	home.appendChild(link2);
